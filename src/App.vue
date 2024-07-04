@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import UserList from './components/UserList.vue'
 import ControlPanel from './components/ControlPanel.vue'
 </script>

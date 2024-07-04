@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
+import { useUsersSetup } from '../stores/storeUsersSetup.ts'
 import UserInstance from './UserInstance.vue'
-
-async function getData() {
-  const url = 'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode&format=json'
+async function getData(url) {
+  //const url = 'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode&format=json'
   try {
     const response = await fetch(url)
     if (!response.ok) {
@@ -16,13 +16,16 @@ async function getData() {
     console.error(error.message)
   }
 }
-const userData = await getData()
+const userSetup = useUsersSetup()
+userSetup.buildURL()
+const userData = await getData(userSetup.finalURL)
 </script>
 
 <template>
   <div class="user-list-container">
     <div class="user-instance" v-for="user in userData" :key="user.name.first">
       <UserInstance
+        :picture="user.picture.large"
         :firstname="user.name.first"
         :lastname="user.name.last"
         :age="user.dob.age"

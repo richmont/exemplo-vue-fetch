@@ -1,8 +1,9 @@
-<script setup>
-defineProps(['firstname', 'lastname', 'age', 'username'])
+<script setup lang="ts">
+defineProps(['firstname', 'lastname', 'age', 'username', 'picture'])
 </script>
 <template>
   <div class="user-container">
+    <div class="user-picture"><img :src="picture" /></div>
     <div class="user-name">Nome: {{ firstname + ' ' + lastname }}</div>
     <div class="user-age">Idade: {{ age }}</div>
     <div class="user-username">Username: {{ username }}</div>

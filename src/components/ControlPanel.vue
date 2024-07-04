@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import UserNationality from './ControlPanel/UserNationality.vue'
 </script>
 <template>
