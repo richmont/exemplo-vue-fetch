@@ -2,7 +2,7 @@
 import UserInstance from './UserInstance.vue'
 
 async function getData() {
-  const url = 'http://127.0.0.1:5000/'
+  const url = 'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode&format=json'
   try {
     const response = await fetch(url)
     if (!response.ok) {
@@ -11,7 +11,7 @@ async function getData() {
 
     const json = await response.json()
 
-    return json.result
+    return json.results
   } catch (error) {
     console.error(error.message)
   }
@@ -21,14 +21,21 @@ const userData = await getData()
 
 <template>
   <div class="user-list-container">
-    <div class="user-instance" v-for="user in userData" :key="user.name">
-      <UserInstance :name="user.name" :age="user.age" :username="user.username" />
+    <div class="user-instance" v-for="user in userData" :key="user.name.first">
+      <UserInstance
+        :firstname="user.name.first"
+        :lastname="user.name.last"
+        :age="user.dob.age"
+        :username="user.login.username"
+      />
     </div>
   </div>
 </template>
 <style>
 .user-list-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  /**https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout */
+  grid-template-columns: repeat(6, auto);
+  padding-bottom: 1rem;
 }
 </style>
