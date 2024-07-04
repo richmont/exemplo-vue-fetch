@@ -15,9 +15,24 @@ def home():
             "username": "richmont"
             },
             {
-            "name": "Epaminondas",
+            "name": "Rusbé",
+            "age": 90,
+            "username": "rusbe"
+            },
+            {
+            "name": "Tiozão",
+            "age": 40,
+            "username": "tiozao"
+            },
+            {
+            "name": "AAA",
+            "age": 1,
+            "username": "aaa"
+            },
+            {
+            "name": "Lol",
             "age": 20,
-            "username": "epaepa"
+            "username": "lolol"
             }
         ]
     }

@@ -10,7 +10,7 @@ async function getData() {
     }
 
     const json = await response.json()
-    console.log('Dados da api: ', json.result)
+
     return json.result
   } catch (error) {
     console.error(error.message)
@@ -20,11 +20,15 @@ const userData = await getData()
 </script>
 
 <template>
-  <UserInstance
-    v-for="user in userData"
-    :key="user.name"
-    :name="user.name"
-    :age="user.age"
-    :username="user.username"
-  />
+  <div class="user-list-container">
+    <div class="user-instance" v-for="user in userData" :key="user.name">
+      <UserInstance :name="user.name" :age="user.age" :username="user.username" />
+    </div>
+  </div>
 </template>
+<style>
+.user-list-container {
+  display: flex;
+  flex-direction: row;
+}
+</style>

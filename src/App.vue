@@ -1,6 +1,5 @@
 <script setup>
 import UserList from './components/UserList.vue'
-import UserInstance from './components/UserInstance.vue'
 </script>
 
 <template>
@@ -13,7 +12,6 @@ import UserInstance from './components/UserInstance.vue'
   </header>
 
   <main>
-    Testando
     <Suspense>
       <!-- component with nested async dependencies -->
       <UserList />
