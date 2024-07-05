@@ -1,23 +1,17 @@
 import { defineStore } from 'pinia'
-//https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode,picture&format=json
-export const useUsersSetup = defineStore('UsersSetup', {
-  state: () => {
-    return {
-      nationality: [],
-      quantity: 30,
-      name: true,
-      username: true,
-      address: true,
-      picture: true,
-      finalURL: null
-    }
-  },
-  // could also be defined as
-  // state: () => ({ count: 0 })
-  actions: {
-    buildURL() {
-      this.finalURL =
-        'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode,picture&format=json'
-    }
+import { ref } from 'vue'
+export default defineStore('UsersSetup', () => {
+  const nationality = ref([])
+  const quantity = ref(30)
+  const name = ref(true)
+  const username = ref(true)
+  const address = ref(true)
+  const picture = ref(true)
+  const finalURL = ref(null)
+
+  function buildURL() {
+    this.finalURL =
+      'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode,picture&format=json'
   }
+  return { nationality, quantity, name, username, address, picture, finalURL, buildURL }
 })

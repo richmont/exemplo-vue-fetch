@@ -1,16 +1,22 @@
 import { defineStore } from 'pinia'
-export const useJSONData = defineStore('JSONData', {
-  state: () => {
-    return {
-      data: null
-    }
-  },
-  // could also be defined as
-  // state: () => ({ count: 0 })
-  actions: {
-    getData() {
-      this.finalURL =
-        'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode,picture&format=json'
+import { ref } from 'vue'
+export default defineStore('storeJSONData', () => {
+  const url = ref()
+  const BruteJSONData = ref()
+  async function getData() {
+    //const url = 'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode&format=json'
+    try {
+      const response = await fetch(this.url)
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      }
+
+      const json = await response.json()
+
+      this.BruteJSONData = json.results
+    } catch (error) {
+      console.error(error.message)
     }
   }
+  return { BruteJSONData, getData, url }
 })

@@ -1,29 +1,19 @@
 <script setup lang="ts">
-import { useUsersSetup } from '../stores/storeUsersSetup.ts'
+import storeUsersSetup from '../stores/storeUsersSetup.ts'
+import storeJSONData from '../stores/storeJSONData.ts'
 import UserInstance from './UserInstance.vue'
-async function getData(url) {
-  //const url = 'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode&format=json'
-  try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`)
-    }
 
-    const json = await response.json()
-
-    return json.results
-  } catch (error) {
-    console.error(error.message)
-  }
-}
-const userSetup = useUsersSetup()
+const userSetup = storeUsersSetup()
+const JSONData = storeJSONData()
 userSetup.buildURL()
-const userData = await getData(userSetup.finalURL)
+
+JSONData.url = userSetup.finalURL
+await JSONData.getData()
 </script>
 
 <template>
   <div class="user-list-container">
-    <div class="user-instance" v-for="user in userData" :key="user.name.first">
+    <div class="user-instance" v-for="user in JSONData.BruteJSONData" :key="user.name.first">
       <UserInstance
         :picture="user.picture.large"
         :firstname="user.name.first"
