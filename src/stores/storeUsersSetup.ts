@@ -10,8 +10,12 @@ export default defineStore('UsersSetup', () => {
   const finalURL = ref(null)
 
   function buildURL() {
+    const stringNationality = nationality.value.join()
+
     this.finalURL =
-      'https://randomuser.me/api/?nat=BR&results=30&inc=name,login,dob,postcode,picture&format=json'
+      'https://randomuser.me/api/?nat=' +
+      stringNationality +
+      '&results=30&inc=name,login,dob,postcode,picture&format=json'
   }
   return { nationality, quantity, name, username, address, picture, finalURL, buildURL }
 })

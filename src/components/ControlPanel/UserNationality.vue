@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import storeUsersSetup from '../../stores/storeUsersSetup.ts'
 
-const nationalityvalue = ref('')
+const UsersSetup = storeUsersSetup()
+
 const nations = ref([
-  { text: 'Aleatório', value: null },
   { text: 'Austrália', value: 'AU' },
   { text: 'Brasil', value: 'BR' },
   { text: 'Canadá', value: 'CA' },
@@ -28,8 +29,8 @@ const nations = ref([
 ])
 </script>
 <template>
-  <div>Nacionalidade escolhida: {{ nationalityvalue }}</div>
-  <select v-model="nationalityvalue" multiple>
+  <div>Nacionalidade escolhida: {{ UsersSetup.nationality }}</div>
+  <select v-model="UsersSetup.nationality" multiple>
     <option disabled value="">Selecione uma</option>
     <option v-for="nation in nations" :value="nation.value" :key="nation.text">
       {{ nation.text }}
