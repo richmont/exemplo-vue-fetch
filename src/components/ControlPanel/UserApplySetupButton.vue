@@ -5,7 +5,7 @@ const userSetup = storeUsersSetup()
 const JSONData = storeJSONData()
 async function refreshData() {
   userSetup.buildURL()
-
+  console.log(userSetup.finalURL)
   await JSONData.getData()
 }
 </script>

@@ -1,28 +1,25 @@
 <script setup lang="ts">
-import storeUsersSetup from '../stores/storeUsersSetup.ts'
 import storeJSONData from '../stores/storeJSONData.ts'
 import UserInstance from './UserInstance.vue'
 
-const userSetup = storeUsersSetup()
 const JSONData = storeJSONData()
-userSetup.buildURL()
-
-JSONData.url = userSetup.finalURL
-await JSONData.getData()
 </script>
 
 <template>
-  <div class="user-list-container">
-    <div class="user-instance" v-for="user in JSONData.BruteJSONData" :key="user.name.first">
-      <UserInstance
-        :picture="user.picture.large"
-        :firstname="user.name.first"
-        :lastname="user.name.last"
-        :age="user.dob.age"
-        :username="user.login.username"
-      />
+  <div v-if="JSONData.BruteJSONData != null">
+    <div class="user-list-container">
+      <div class="user-instance" v-for="user in JSONData.BruteJSONData" :key="user.name.first">
+        <UserInstance
+          :picture="user.picture.large"
+          :firstname="user.name.first"
+          :lastname="user.name.last"
+          :age="user.dob.age"
+          :username="user.login.username"
+        />
+      </div>
     </div>
   </div>
+  <div v-else>ESCOLHA AS OPÇÕES E PRESSIONE EM "ATUALIZAR"</div>
 </template>
 <style>
 .user-list-container {

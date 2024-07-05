@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 export default defineStore('UsersSetup', () => {
   const nationality = ref([])
-  const quantity = ref(30)
-  const name = ref(true)
-  const username = ref(true)
-  const address = ref(true)
-  const picture = ref(true)
+  const quantity = ref(5)
+  const name = ref(null)
+  const username = ref(null)
+  const address = ref(null)
+  const picture = ref(null)
   const finalURL = ref(null)
 
   function uncheckCheckboxes(classname, checkboxesArray) {
@@ -23,7 +23,9 @@ export default defineStore('UsersSetup', () => {
     this.finalURL =
       'https://randomuser.me/api/?nat=' +
       stringNationality +
-      '&results=30&inc=name,login,dob,postcode,picture&format=json'
+      '&results=' +
+      quantity.value +
+      '&inc=name,login,dob,postcode,picture&format=json'
   }
   return {
     nationality,
