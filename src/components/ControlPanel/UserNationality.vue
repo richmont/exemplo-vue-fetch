@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import storeUsersSetup from '../../stores/storeUsersSetup.ts'
 
 const UsersSetup = storeUsersSetup()
-
 const nations = ref([
   { text: 'Austrália', value: 'AU' },
   { text: 'Brasil', value: 'BR' },
@@ -30,11 +29,17 @@ const nations = ref([
 </script>
 <template>
   <div>Nacionalidade escolhida: {{ UsersSetup.nationality }}</div>
-  <select v-model="UsersSetup.nationality" multiple>
-    <option disabled value="">Selecione uma</option>
-    <option v-for="nation in nations" :value="nation.value" :key="nation.text">
-      {{ nation.text }}
-    </option>
-  </select>
+  <button @click="UsersSetup.uncheckCheckboxes('.checkbox-nationality', UsersSetup.nationality)">
+    Desmarcar todos
+  </button>
+  <div class="container-checkbox-nationality" v-for="nation in nations" :key="nation.text">
+    <input
+      class="checkbox-nationality"
+      v-model="UsersSetup.nationality"
+      type="checkbox"
+      :value="nation.value"
+    />
+    <label :for="nations.value">{{ nation.text }}</label>
+  </div>
 </template>
 <style></style>

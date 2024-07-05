@@ -9,6 +9,14 @@ export default defineStore('UsersSetup', () => {
   const picture = ref(true)
   const finalURL = ref(null)
 
+  function uncheckCheckboxes(classname, checkboxesArray) {
+    const checkboxes = document.querySelectorAll(classname)
+    checkboxes.forEach((box) => {
+      box.checked = false
+    })
+    /**https://stackoverflow.com/questions/57834381/clearing-an-array-content-and-reactivity-issues-using-vue-js */
+    checkboxesArray.splice(0)
+  }
   function buildURL() {
     const stringNationality = nationality.value.join()
 
@@ -17,5 +25,15 @@ export default defineStore('UsersSetup', () => {
       stringNationality +
       '&results=30&inc=name,login,dob,postcode,picture&format=json'
   }
-  return { nationality, quantity, name, username, address, picture, finalURL, buildURL }
+  return {
+    nationality,
+    quantity,
+    name,
+    username,
+    address,
+    picture,
+    finalURL,
+    buildURL,
+    uncheckCheckboxes
+  }
 })
