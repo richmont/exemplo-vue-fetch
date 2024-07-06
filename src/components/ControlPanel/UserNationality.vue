@@ -38,8 +38,9 @@ const nations = ref([
         v-model="UsersSetup.nationality"
         type="checkbox"
         :value="nation.value"
+        :id="nation.value"
       />
-      <label :for="nations.value">{{ nation.text }}</label>
+      <label :for="nation.value">{{ nation.text }}</label>
     </div>
   </div>
 </template>
@@ -47,11 +48,9 @@ const nations = ref([
 .container-checkbox-nationality {
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 500px;
   overflow-y: scroll;
-  border-radius: 0.25em;
 }
 label {
-  padding: 1em;
 }
 </style>

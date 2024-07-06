@@ -27,7 +27,8 @@ const JSONData = storeJSONData()
   /**https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout */
   grid-template-columns: repeat(7, auto);
   padding: 1%;
-  width: 100%;
+  width: 90%;
   justify-items: center;
+  position: relative;
 }
 </style>

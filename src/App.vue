@@ -22,4 +22,6 @@ import ControlPanel from './components/ControlPanel.vue'
   display: flex;
   flex-direction: row;
 }
+UserList {
+}
 </style>
