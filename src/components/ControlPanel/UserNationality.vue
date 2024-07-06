@@ -28,18 +28,27 @@ const nations = ref([
 ])
 </script>
 <template>
-  <div>Nacionalidade escolhida: {{ UsersSetup.nationality }}</div>
-  <button @click="UsersSetup.uncheckCheckboxes('.checkbox-nationality', UsersSetup.nationality)">
-    Desmarcar todos
-  </button>
-  <div class="container-checkbox-nationality" v-for="nation in nations" :key="nation.text">
-    <input
-      class="checkbox-nationality"
-      v-model="UsersSetup.nationality"
-      type="checkbox"
-      :value="nation.value"
-    />
-    <label :for="nations.value">{{ nation.text }}</label>
+  <div class="container-checkbox-nationality">
+    <button @click="UsersSetup.uncheckCheckboxes('.checkbox-nationality', UsersSetup.nationality)">
+      Desmarcar todos
+    </button>
+    <div v-for="nation in nations" :key="nation.text">
+      <input
+        class="checkbox-nationality"
+        v-model="UsersSetup.nationality"
+        type="checkbox"
+        :value="nation.value"
+      />
+      <label :for="nations.value">{{ nation.text }}</label>
+    </div>
   </div>
 </template>
-<style></style>
+<style>
+.container-checkbox-nationality {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  overflow-y: scroll;
+  border-radius: 0.25em;
+}
+</style>

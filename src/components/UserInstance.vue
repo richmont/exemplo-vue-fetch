@@ -15,12 +15,16 @@ defineProps(['firstname', 'lastname', 'age', 'username', 'picture'])
   flex-direction: column;
   flex-wrap: wrap;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px blue;
+  border-radius: 3px;
 }
 .user-name,
 .user-age,
 .user-username {
-  align-content: center;
-  padding: 1rem;
+  display: flex;
+  padding: 1em;
+  align-items: start;
+  border: 1em;
+  border-color: blue;
 }
 </style>

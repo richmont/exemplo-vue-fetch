@@ -8,9 +8,17 @@ const userSetup = storeUsersSetup()
 <template>
   <div class="control-panel-container">
     <UserNationality />
-    <UserApplySetupButton />
     <UserQuantity />
-    {{ userSetup.finalURL }}
+    <UserApplySetupButton />
   </div>
 </template>
-<style></style>
+<style>
+.control-panel-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 3em;
+  justify-content: space-evenly;
+  align-items: center;
+}
+</style>

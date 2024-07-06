@@ -25,7 +25,9 @@ const JSONData = storeJSONData()
 .user-list-container {
   display: grid;
   /**https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout */
-  grid-template-columns: repeat(6, auto);
-  padding-bottom: 1rem;
+  grid-template-columns: repeat(5, auto);
+  padding: 1%;
+  width: 100%;
+  justify-items: left;
 }
 </style>

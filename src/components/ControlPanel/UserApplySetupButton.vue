@@ -9,5 +9,17 @@ async function refreshData() {
   await JSONData.getData()
 }
 </script>
-<template><button @click="refreshData">Atualizar</button></template>
-<style></style>
+<template>
+  <div class="button-refresh-data-container">
+    <button class="button-refresh-data" @click="refreshData">Atualizar</button>
+  </div>
+</template>
+<style>
+.button-refresh-data {
+  height: 4em;
+  width: 6em;
+}
+.button-refresh-data-container {
+  display: flex;
+}
+</style>
