@@ -4,18 +4,22 @@ import ControlPanel from './components/ControlPanel.vue'
 </script>
 
 <template>
-  <header><ControlPanel /></header>
+  <header></header>
 
   <main>
-    <Suspense>
-      <!-- component with nested async dependencies -->
-      <UserList />
-      <!-- loading state via #fallback slot -->
-      <template #fallback> Carregando... </template>
-    </Suspense>
-
-    <!--<TheWelcome />-->
+    <div class="main-container">
+      <ControlPanel />
+      <Suspense>
+        <UserList />
+        <template #fallback> Carregando... </template>
+      </Suspense>
+    </div>
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+</style>

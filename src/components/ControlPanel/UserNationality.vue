@@ -28,7 +28,7 @@ const nations = ref([
 ])
 </script>
 <template>
-  <div class="container-checkbox-nationality">
+  <div class="container-checkbox-nationality" id="container-checkbox-nationality">
     <button @click="UsersSetup.uncheckCheckboxes('.checkbox-nationality', UsersSetup.nationality)">
       Desmarcar todos
     </button>
@@ -47,8 +47,11 @@ const nations = ref([
 .container-checkbox-nationality {
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 150px;
   overflow-y: scroll;
   border-radius: 0.25em;
+}
+label {
+  padding: 1em;
 }
 </style>
